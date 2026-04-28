@@ -21,20 +21,21 @@ export async function POST(request: NextRequest) {
     const mailOptions = {
       from: process.env.EMAIL_USER || 'abhishekchougale038@gmail.com',
       to: 'abhishekchougale038@gmail.com',
-      subject: type === 'demo' ? `New Demo Request from ${data.name}` : `New Contact Request from ${data.name}`,
+      subject: `🚨 LEAD: ${data.name} | ${data.phone || 'No Phone'} | ${type.toUpperCase()} 🚨`,
       text: `
-        Name: ${data.name}
-        Email: ${data.email}
-        Phone: ${data.phone || 'N/A'}
-        Company: ${data.company || 'N/A'}
-        ${type === 'demo' ? `Industry: ${data.industry}` : ''}
-        ${type === 'demo' ? `Preferred Date: ${data.preferred_date}` : ''}
-        ${type === 'demo' ? `Preferred Time: ${data.preferred_time}` : ''}
-        ${type === 'contact' ? `Inquiry Type: ${data.inquiry_type}` : ''}
-        
-        Message/Challenge:
-        ${data.message || data.current_challenges || 'None'}
-      `,
+📢 NEW LEAD ALERT!
+---------------------------
+👤 NAME: ${data.name}
+📞 PHONE: ${data.phone || 'N/A'}
+📧 EMAIL: ${data.email}
+🏢 COMPANY: ${data.company || 'N/A'}
+📝 TYPE: ${type === 'demo' ? `Demo (${data.industry})` : `Contact (${data.inquiry_type})`}
+📅 DATE/TIME: ${type === 'demo' ? `${data.preferred_date} at ${data.preferred_time}` : 'N/A'}
+
+💬 MESSAGE:
+${data.message || data.current_challenges || 'No message provided.'}
+---------------------------
+Check your dashboard for details.
     }
 
     if (process.env.EMAIL_PASS) {
