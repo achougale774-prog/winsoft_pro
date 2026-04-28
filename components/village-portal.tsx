@@ -26,11 +26,22 @@ export function VillagePortal() {
     }
   }
 
-    const text = language === 'mr' 
-      ? "विनसॉफ्ट डेअरी सॉफ्टवेअरमध्ये आपले स्वागत आहे. हे सॉफ्टवेअर वापरणे अतिशय सोपे आहे. दुधाची नोंद करण्यासाठी फक्त फॅट आणि वजन टाका, बिल आपोआप तयार होईल."
-      : "Welcome to Winsoft Dairy Software. This software is very easy to use. To record milk, just enter fat and weight, and the bill will be generated automatically."
+  const playAudioHelp = () => {
+    let text = ""
+    let toastMsg = ""
     
-    toast.info(language === 'mr' ? "माहिती बोलत आहे..." : "Speaking information...")
+    if (language === 'mr') {
+      text = "विनसॉफ्ट डेअरी सॉफ्टवेअरमध्ये आपले स्वागत आहे. हे सॉफ्टवेअर वापरणे अतिशय सोपे आहे. दुधाची नोंद करण्यासाठी फक्त फॅट आणि वजन टाका, बिल आपोआप तयार होईल."
+      toastMsg = "माहिती बोलत आहे..."
+    } else if (language === 'kn') {
+      text = "ವಿನ್ಸಾಫ್ಟ್ ಡೈರಿ ಸಾಫ್ಟ್‌ವೇರ್‌ಗೆ ಸುಸ್ವಾಗತ. ಈ ಸಾಫ್ಟ್‌ವೇರ್ ಬಳಸಲು ತುಂಬಾ ಸುಲಭ. ಹಾಲನ್ನು ರೆಕಾರ್ಡ್ ಮಾಡಲು ಫ್ಯಾಟ್ ಮತ್ತು ತೂಕವನ್ನು ನಮೂದಿಸಿ, ಬಿಲ್ ಸ್ವಯಂಚಾಲಿತವಾಗಿ ಸೃಜನೆಯಾಗುತ್ತದೆ."
+      toastMsg = "ಮಾಹಿತಿ ಹೇಳಲಾಗುತ್ತಿದೆ..."
+    } else {
+      text = "Welcome to Winsoft Dairy Software. This software is very easy to use. To record milk, just enter fat and weight, and the bill will be generated automatically."
+      toastMsg = "Speaking information..."
+    }
+    
+    toast.info(toastMsg)
     speakText(text, language)
   }
 

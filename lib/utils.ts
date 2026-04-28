@@ -27,6 +27,15 @@ export function speakText(text: string, lang: string) {
       } else {
         utterance.lang = 'mr-IN'
       }
+    } else if (lang === 'kn') {
+      // Look for Kannada voices
+      const kannadaVoice = voices.find(v => v.lang.includes('kn') || v.name.toLowerCase().includes('kannada'))
+      if (kannadaVoice) {
+        utterance.voice = kannadaVoice
+        utterance.lang = kannadaVoice.lang
+      } else {
+        utterance.lang = 'kn-IN'
+      }
     } else {
       utterance.lang = 'en-US'
     }

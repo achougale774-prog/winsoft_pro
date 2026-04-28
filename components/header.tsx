@@ -241,16 +241,27 @@ export function Header() {
               variant="outline"
               size="sm"
               onClick={() => {
-                const text = language === 'mr' 
-                  ? "विनसॉफ्ट डिजिटल सोल्यूशन्स मध्ये आपले स्वागत आहे. आम्ही दुग्ध, साखर आणि सुवर्ण उद्योगांसाठी प्रगत सॉफ्टवेअर देतो."
-                  : "Welcome to Winsoft Digital Solutions. We provide advanced software for Dairy, Sugar, and Gold industries."
-                toast.info(language === 'mr' ? "माहिती बोलत आहे..." : "Speaking information...")
+                let text = ""
+                let toastMsg = ""
+                if (language === 'mr') {
+                  text = "विनसॉफ्ट डिजिटल सोल्यूशन्स मध्ये आपले स्वागत आहे. आम्ही दुग्ध, साखर आणि सुवर्ण उद्योगांसाठी प्रगत सॉफ्टवेअर देतो."
+                  toastMsg = "माहिती बोलत आहे..."
+                } else if (language === 'kn') {
+                  text = "ವಿನ್ಸಾಫ್ಟ್ ಡಿಜಿಟಲ್ ಸೊಲ್ಯೂಷನ್ಸ್‌ಗೆ ಸುಸ್ವಾಗತ. ನಾವು ಡೈರಿ, ಸಕ್ಕರೆ ಮತ್ತು ಚಿನ್ನದ ಉದ್ಯಮಗಳಿಗೆ ಸುಧಾರಿತ ಸಾಫ್ಟ್‌ವೇರ್ ಅನ್ನು ಒದಗಿಸುತ್ತೇವೆ."
+                  toastMsg = "ಮಾಹಿತಿ ಹೇಳಲಾಗುತ್ತಿದೆ..."
+                } else {
+                  text = "Welcome to Winsoft Digital Solutions. We provide advanced software for Dairy, Sugar, and Gold industries."
+                  toastMsg = "Speaking information..."
+                }
+                toast.info(toastMsg)
                 speakText(text, language)
               }}
               className="h-9 px-3 gap-2 border-orange-200 bg-orange-50 dark:bg-orange-950/20 dark:border-orange-900/30 text-orange-700 dark:text-orange-400"
             >
               <Volume2 className="w-4 h-4" />
-              <span className="text-xs font-bold">{language === 'mr' ? "माहिती ऐका" : "Listen"}</span>
+              <span className="text-xs font-bold">
+                {language === 'mr' ? "माहिती ऐका" : language === 'kn' ? "ಮಾಹಿತಿ ಕೇಳಿ" : "Listen"}
+              </span>
             </Button>
 
             <Select value={language} onValueChange={(val: any) => setLanguage(val)}>
