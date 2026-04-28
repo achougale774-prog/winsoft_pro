@@ -253,6 +253,7 @@ export function Header() {
                   text = "Welcome to Winsoft Digital Solutions. We provide advanced software for Dairy, Sugar, and Gold industries."
                   toastMsg = "Speaking information..."
                 }
+                console.log("Header Audio Button clicked. Current language:", language)
                 toast.info(toastMsg)
                 speakText(text, language)
               }}

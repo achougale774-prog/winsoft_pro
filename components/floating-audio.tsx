@@ -21,15 +21,16 @@ export function FloatingAudio() {
       
       if (language === 'mr') {
         text = "विनसॉफ्ट डिजिटल सोल्यूशन्स मध्ये आपले स्वागत आहे. आम्ही दुग्ध, साखर आणि सुवर्ण उद्योगांसाठी प्रगत सॉफ्टवेअर देतो. अधिक माहितीसाठी खालील बटणांवर क्लिक करा किंवा व्हॉट्सॲपवर मेसेज करा."
-        toastMsg = "माहिती बोलत आहे..."
+        toastMsg = "माहिती बोलत आहे... (मराठी)"
       } else if (language === 'kn') {
         text = "ವಿನ್ಸಾಫ್ಟ್ ಡಿಜಿಟಲ್ ಸೊಲ್ಯೂಷನ್ಸ್‌ಗೆ ಸುಸ್ವಾಗತ. ನಾವು ಡೈರಿ, ಸಕ್ಕರೆ ಮತ್ತು ಚಿನ್ನದ ಉದ್ಯಮಗಳಿಗೆ ಸುಧಾರಿತ ಸಾಫ್ಟ್‌ವೇರ್ ಅನ್ನು ಒದಗಿಸುತ್ತೇವೆ. ಹೆಚ್ಚಿನ ಮಾಹಿತಿಗಾಗಿ ಕೆಳಗಿನ ಬಟನ್‌ಗಳನ್ನು ಕ್ಲಿಕ್ ಮಾಡಿ ಅಥವಾ ವಾಟ್ಸಾಪ್‌ನಲ್ಲಿ ಸಂದೇಶ ಕಳುಹಿಸಿ."
-        toastMsg = "ಮಾಹಿತಿ ಹೇಳಲಾಗುತ್ತಿದೆ..."
+        toastMsg = "ಮಾಹಿತಿ ಹೇಳಲಾಗುತ್ತಿದೆ... (ಕನ್ನಡ)"
       } else {
         text = "Welcome to Winsoft Digital Solutions. We provide advanced software for Dairy, Sugar, and Gold industries. For more information, click the buttons below or message us on WhatsApp."
-        toastMsg = "Speaking information..."
+        toastMsg = "Speaking info... (English)"
       }
       
+      console.log("FloatingAudio toggleSpeak language:", language)
       toast.info(toastMsg)
       speakText(text, language)
       setIsPlaying(true)

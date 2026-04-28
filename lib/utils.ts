@@ -11,6 +11,8 @@ export function speakText(text: string, lang: string) {
     return
   }
 
+  console.log("speakText called with lang:", lang, "text preview:", text.substring(0, 20))
+
   // Cancel any ongoing speech
   window.speechSynthesis.cancel()
   
@@ -18,9 +20,10 @@ export function speakText(text: string, lang: string) {
   
   const setVoice = () => {
     const voices = window.speechSynthesis.getVoices()
+    console.log("Available voices count:", voices.length)
+
     if (lang === 'mr') {
-      // Look for Marathi voices
-      const marathiVoice = voices.find(v => v.lang.includes('mr') || v.name.toLowerCase().includes('marathi'))
+      const marathiVoice = voices.find(v => v.lang.toLowerCase().includes('mr') || v.name.toLowerCase().includes('marathi'))
       if (marathiVoice) {
         utterance.voice = marathiVoice
         utterance.lang = marathiVoice.lang
@@ -28,8 +31,7 @@ export function speakText(text: string, lang: string) {
         utterance.lang = 'mr-IN'
       }
     } else if (lang === 'kn') {
-      // Look for Kannada voices
-      const kannadaVoice = voices.find(v => v.lang.includes('kn') || v.name.toLowerCase().includes('kannada'))
+      const kannadaVoice = voices.find(v => v.lang.toLowerCase().includes('kn') || v.name.toLowerCase().includes('kannada'))
       if (kannadaVoice) {
         utterance.voice = kannadaVoice
         utterance.lang = kannadaVoice.lang
@@ -40,18 +42,23 @@ export function speakText(text: string, lang: string) {
       utterance.lang = 'en-US'
     }
     
-    utterance.rate = 0.9
+    utterance.rate = 0.85 // Slightly slower for better clarity
+    utterance.pitch = 1.0
     utterance.volume = 1.0
-    console.log("Speaking with voice:", utterance.voice?.name || "default", "lang:", utterance.lang)
+    
+    console.log("Actually speaking with lang:", utterance.lang, "Voice:", utterance.voice?.name || "System Default")
     window.speechSynthesis.speak(utterance)
   }
 
-  // If voices are already loaded, speak immediately
+  // Ensure voices are loaded
   if (window.speechSynthesis.getVoices().length > 0) {
     setVoice()
   } else {
-    // Wait for voices to load
     window.speechSynthesis.onvoiceschanged = setVoice
+    // Fallback if event doesn't fire
+    setTimeout(() => {
+      if (window.speechSynthesis.getVoices().length > 0) setVoice()
+    }, 500)
   }
 
   utterance.onerror = (event) => {
