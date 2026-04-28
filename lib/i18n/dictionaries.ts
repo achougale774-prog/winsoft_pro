@@ -149,7 +149,15 @@ export const dictionaries = {
       "heroSlide3Discount": "Special Enterprise Pricing",
       "bankOffer": "Bank Offer",
       "tnc": "*Using {bank} Cards. T&C apply",
-      "shopNow": "Shop Now"
+      "shopNow": "Shop Now",
+      "villagePortalTitle": "Rural Support Portal",
+      "villagePortalDesc": "Simplified tools designed specifically for farmers and rural users.",
+      "milkCalcTitle": "Milk Rate Calculator",
+      "milkCalcDesc": "Quickly check your milk payment based on current rates.",
+      "voiceHelpTitle": "Audio Guidance",
+      "voiceHelpDesc": "Listen to how our software works in your local language.",
+      "whatsappSupportTitle": "WhatsApp Help",
+      "whatsappSupportDesc": "Direct connection to our support team for quick assistance."
     },
     footer: {
       "about": "Advanced Dairy Management Software designed to simplify milk procurement, billing, accounting, production, and ERP management since 1998.",
@@ -800,7 +808,15 @@ export const dictionaries = {
       "heroSlide3Discount": "विशेष एंटरप्राइझ किंमत",
       "bankOffer": "बँक ऑफर",
       "tnc": "*{bank} कार्ड वापरून. अटी व शर्ती लागू",
-      "shopNow": "आता खरेदी करा"
+      "shopNow": "खरेदी करा",
+      "villagePortalTitle": "गावकऱ्यांसाठी खास सुविधा",
+      "villagePortalDesc": "आमची सॉफ्टवेअर्स सामान्य गावकऱ्यांना वापरता येतील इतकी सोपी आहेत.",
+      "milkCalcTitle": "दूध दर कॅल्क्युलेटर",
+      "milkCalcDesc": "तुमच्या दुधाचे फॅट टाकून अंदाजे रक्कम तपासा.",
+      "voiceHelpTitle": "आवाजाद्वारे मदत",
+      "voiceHelpDesc": "अडाणी लोकांसाठी आवाजाद्वारे माहिती ऐकण्याची सोय.",
+      "whatsappSupportTitle": "थेट व्हॉट्सॲप सपोर्ट",
+      "whatsappSupportDesc": "कोणतीही अडचण आल्यास थेट आम्हाला मेसेज करा."
     },
     footer: {
       "about": "१९९८ पासून दूध संकलन, बिलिंग, अकाउंटिंग, उत्पादन आणि ईआरपी व्यवस्थापन सुलभ करण्यासाठी डिझाइन केलेले प्रगत दुग्ध व्यवस्थापन सॉफ्टवेअर.",

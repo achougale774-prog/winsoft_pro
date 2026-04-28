@@ -8,6 +8,7 @@ import Image from "next/image"
 import Link from "next/link"
 import { HeroSlider } from "@/components/hero-slider"
 import { useLanguage } from "@/components/language-provider"
+import { VillagePortal } from "@/components/village-portal"
 
 export default function HomePage() {
   const { t } = useLanguage()
