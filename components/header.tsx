@@ -8,6 +8,7 @@ import { useLanguage } from "@/components/language-provider"
 import { useTheme } from "next-themes"
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select"
 import { speakText } from "@/lib/utils"
+import { toast } from "sonner"
 
 
 const navItems = (t: (key: string) => string) => [
@@ -243,6 +244,7 @@ export function Header() {
                 const text = language === 'mr' 
                   ? "विनसॉफ्ट डिजिटल सोल्यूशन्स मध्ये आपले स्वागत आहे. आम्ही दुग्ध, साखर आणि सुवर्ण उद्योगांसाठी प्रगत सॉफ्टवेअर देतो."
                   : "Welcome to Winsoft Digital Solutions. We provide advanced software for Dairy, Sugar, and Gold industries."
+                toast.info(language === 'mr' ? "माहिती बोलत आहे..." : "Speaking information...")
                 speakText(text, language)
               }}
               className="h-9 px-3 gap-2 border-orange-200 bg-orange-50 dark:bg-orange-950/20 dark:border-orange-900/30 text-orange-700 dark:text-orange-400"
@@ -292,6 +294,7 @@ export function Header() {
                 const text = language === 'mr' 
                   ? "विनसॉफ्ट सॉफ्टवेअर माहिती ऐका. आम्ही डेअरी, शुगर आणि गोल्ड उद्योगांसाठी सॉफ्टवेअर देतो."
                   : "Listen to Winsoft software info. We provide software for Dairy, Sugar, and Gold industries."
+                toast.info(language === 'mr' ? "माहिती बोलत आहे..." : "Speaking information...")
                 speakText(text, language)
               }}
               className="w-8 h-8 text-orange-600"

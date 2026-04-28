@@ -5,6 +5,7 @@ import { Button } from "@/components/ui/button"
 import { Volume2, VolumeX } from "lucide-react"
 import { useLanguage } from "@/components/language-provider"
 import { speakText } from "@/lib/utils"
+import { toast } from "sonner"
 
 export function FloatingAudio() {
   const { language } = useLanguage()
@@ -19,6 +20,7 @@ export function FloatingAudio() {
         ? "विनसॉफ्ट डिजिटल सोल्यूशन्स मध्ये आपले स्वागत आहे. आम्ही दुग्ध, साखर आणि सुवर्ण उद्योगांसाठी प्रगत सॉफ्टवेअर देतो. अधिक माहितीसाठी खालील बटणांवर क्लिक करा किंवा व्हॉट्सॲपवर मेसेज करा."
         : "Welcome to Winsoft Digital Solutions. We provide advanced software for Dairy, Sugar, and Gold industries. For more information, click the buttons below or message us on WhatsApp."
       
+      toast.info(language === 'mr' ? "माहिती बोलत आहे..." : "Speaking information...")
       speakText(text, language)
       setIsPlaying(true)
       

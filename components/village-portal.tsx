@@ -8,6 +8,7 @@ import { Label } from "@/components/ui/label"
 import { Volume2, Calculator, MessageCircle, PhoneCall, Info } from "lucide-react"
 import { useLanguage } from "@/components/language-provider"
 import { speakText } from "@/lib/utils"
+import { toast } from "sonner"
 
 export function VillagePortal() {
   const { t, language } = useLanguage()
@@ -25,11 +26,11 @@ export function VillagePortal() {
     }
   }
 
-  const playAudioHelp = () => {
     const text = language === 'mr' 
       ? "विनसॉफ्ट डेअरी सॉफ्टवेअरमध्ये आपले स्वागत आहे. हे सॉफ्टवेअर वापरणे अतिशय सोपे आहे. दुधाची नोंद करण्यासाठी फक्त फॅट आणि वजन टाका, बिल आपोआप तयार होईल."
       : "Welcome to Winsoft Dairy Software. This software is very easy to use. To record milk, just enter fat and weight, and the bill will be generated automatically."
     
+    toast.info(language === 'mr' ? "माहिती बोलत आहे..." : "Speaking information...")
     speakText(text, language)
   }
 
