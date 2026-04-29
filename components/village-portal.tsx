@@ -9,6 +9,7 @@ import { Volume2, Calculator, MessageCircle, PhoneCall, Info } from "lucide-reac
 import { useLanguage } from "@/components/language-provider"
 import { speakText } from "@/lib/utils"
 import { toast } from "sonner"
+import Link from "next/link"
 
 export function VillagePortal() {
   const { t, language } = useLanguage()
@@ -137,7 +138,7 @@ export function VillagePortal() {
                     <p className="text-gray-500 dark:text-zinc-400">{t("home.whatsappSupportDesc")}</p>
                   </div>
                 </CardContent>
-              </Link>
+              </Card>
             </Link>
 
             <Card className="border border-gray-100 dark:border-zinc-800 rounded-[2rem] shadow-lg dark:shadow-none bg-blue-50/50 dark:bg-blue-900/10">

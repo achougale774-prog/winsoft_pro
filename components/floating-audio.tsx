@@ -4,12 +4,20 @@ import { useState } from "react"
 import { Button } from "@/components/ui/button"
 import { Volume2, VolumeX } from "lucide-react"
 import { useLanguage } from "@/components/language-provider"
+import { usePathname } from "next/navigation"
 import { speakText } from "@/lib/utils"
 import { toast } from "sonner"
 
 export function FloatingAudio() {
   const { language } = useLanguage()
+  const pathname = usePathname()
   const [isPlaying, setIsPlaying] = useState(false)
+
+  // Hide the global floating audio on product and products pages
+  // because those pages have their own specific audio buttons
+  if (pathname?.startsWith('/product') || pathname?.startsWith('/dairy') || pathname?.startsWith('/sugar') || pathname?.startsWith('/gold')) {
+    return null
+  }
 
   const toggleSpeak = () => {
     if (isPlaying) {

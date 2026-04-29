@@ -10,6 +10,7 @@ import { Button } from "@/components/ui/button"
 import { ChevronRight, ArrowLeft, Headphones, Mail, Calendar } from "lucide-react"
 import { useLanguage } from "@/components/language-provider"
 import { WhatsAppButton } from "@/components/whatsapp-button"
+import { AudioButton } from "@/components/audio-button"
 
 export default function ProductDetailPage() {
   const params = useParams()
@@ -99,6 +100,19 @@ export default function ProductDetailPage() {
   const [mainImage, setMainImage] = useState(product.images[0])
   const [selectedVariant, setSelectedVariant] = useState(product.variants[0])
 
+  const variantsText = product.variants.join(", ")
+  const technicalSpecs = Object.entries(product.details).map(([k, v]) => `${k}: ${v}`).join(", ")
+  const featuresText = product.about.join(", ")
+  
+  let audioText = ""
+  if (language === 'mr') {
+    audioText = `उत्पादनाचे नाव: ${product.title}. वर्णन: ${product.description}. उपलब्ध आवृत्त्या: ${variantsText}. तांत्रिक माहिती: ${technicalSpecs}. मुख्य वैशिष्ट्ये: ${featuresText}.`
+  } else if (language === 'kn') {
+    audioText = `ಉತ್ಪನ್ನದ ಹೆಸರು: ${product.title}. ವಿವರಣೆ: ${product.description}. ಲಭ್ಯವಿರುವ ಆವೃತ್ತಿಗಳು: ${variantsText}. ತಾಂತ್ರಿಕ ವಿಶೇಷಣಗಳು: ${technicalSpecs}. ಪ್ರಮುಖ ವೈಶಿಷ್ಟ್ಯಗಳು: ${featuresText}.`
+  } else {
+    audioText = `Product Name: ${product.title}. Description: ${product.description}. Available Editions: ${variantsText}. Technical Specifications: ${technicalSpecs}. Key Features: ${featuresText}.`
+  }
+
   return (
     <div className="min-h-screen bg-white dark:bg-zinc-950 font-sans text-gray-900 dark:text-zinc-100">
       <Header />
@@ -145,9 +159,12 @@ export default function ProductDetailPage() {
           {/* MIDDLE SECTION (DETAILS) */}
           <div className="w-full lg:w-4/12 space-y-8">
             <div>
-              <h1 className="text-3xl font-bold text-gray-900 dark:text-zinc-100 leading-tight mb-4">
-                {product.title}
-              </h1>
+              <div className="flex flex-col items-start gap-4 mb-4">
+                <h1 className="text-3xl font-bold text-gray-900 dark:text-zinc-100 leading-tight">
+                  {product.title}
+                </h1>
+                <AudioButton text={audioText} colorTheme="purple" />
+              </div>
               <p className="text-lg text-gray-600 dark:text-zinc-400 leading-relaxed">
                 {product.description}
               </p>
